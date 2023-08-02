@@ -4,11 +4,10 @@
 
 ## Índice
 
--   [1. Configurações Iniciais](#1-configurações-iniciais)
--   [2. Prática 1](#prática-1)
--   [3. Prática 2](#prática-2)
--   [4. Prática 3](#prática-3)
--   [3. Fixação 2](#fixação)
+-   [1. Prática 1](#prática-1)
+-   [2. Prática 2](#prática-2)
+-   [3. Prática 3](#prática-3)
+-   [4. Fixação 2](#fixação)
 
 ## 1. Configurações Iniciais
 
