@@ -177,3 +177,83 @@
 ### Enunciado:
 
 ### Minha Resolução:
+
+-   Em `context` crio mais um arquivo chamado `GlobalState.js`:
+-   Em `GlobalState.js`, ele recebe um `children`, e além de receber todo o contexto que antes estava no `App.js`, eu irei retornar:
+
+    ```
+    return (
+        <GlobalContext.Provider value={data}>{children}</GlobalContext.Provider>
+    );
+    ```
+
+-   O código inteiro de `GlobalState.js` fica assim:
+
+    ```
+    import axios from 'axios';
+    import { useEffect, useState } from 'react';
+    import { BASE_URL } from '../constants/url';
+    import GlobalContext from './GlobalContext';
+
+    export const GlobalState = ({ children }) => {
+        const [pokelist, setPokelist] = useState([]);
+        const [pokedex, setPokedex] = useState([]);
+
+        useEffect(() => {
+            fetchPokelist();
+        }, []);
+
+        const fetchPokelist = async () => {
+            try {
+                const response = await axios.get(BASE_URL);
+                setPokelist(response.data.results);
+            } catch (error) {
+                console.log('Erro ao buscar lista de pokemons');
+                console.log(error.response);
+            }
+        };
+
+        const addToPokedex = (pokemonToAdd) => {
+            const isAlreadyOnPokedex = pokedex.find(
+                (pokemonInPokedex) => pokemonInPokedex.name === pokemonToAdd.name
+            );
+
+            if (!isAlreadyOnPokedex) {
+                const newPokedex = [...pokedex, pokemonToAdd];
+                setPokedex(newPokedex);
+            }
+        };
+
+        const removeFromPokedex = (pokemonToRemove) => {
+            const newPokedex = pokedex.filter(
+                (pokemonInPokedex) => pokemonInPokedex.name !== pokemonToRemove.name
+            );
+
+            setPokedex(newPokedex);
+        };
+
+        const data = {
+            removeFromPokedex,
+            addToPokedex,
+            fetchPokelist,
+            pokedex,
+            setPokedex,
+            pokelist,
+            setPokelist,
+        };
+
+        return (
+            <GlobalContext.Provider value={data}>{children}</GlobalContext.Provider>
+        );
+    };
+
+    ```
+
+-   E `App.js` fica assim:
+    ```
+    return (
+        <GlobalState>
+            <Router />
+        </GlobalState>
+    );
+    ```
