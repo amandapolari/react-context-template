@@ -21,7 +21,7 @@
 
 ### Minha Resolução:
 
--   Em `src` criei a pasta `contexts` com o arquivo `GlobalContext.js`:
+-   Em `src` criei a pasta `contexts` com o arquivo `GlobalContext.js`:<br>
     ![Alt text](image.png)
 
 -   Em `GlobalContext.js`:
