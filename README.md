@@ -7,7 +7,7 @@
 -   [1. Prática 1](#prática-1)
 -   [2. Prática 2](#prática-2)
 -   [3. Prática 3](#prática-3)
--   [4. Fixação 2](#fixação)
+-   [4. Fixação](#fixação)
 
 ## 1. Configurações Iniciais
 
